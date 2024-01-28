@@ -1,0 +1,871 @@
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #8f54a0 #8f54a0;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #f4f7fd00;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #8f54a0;
+    border-radius: 10px;
+    border: 3px solid #ffffff00;
+  }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.LoginPageContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.LoginContainer {
+  padding: 20px;
+  width: 300px;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-shadow: -8px 20px 47px 0px rgba(0,0,0,0.58);
+  -moz-box-shadow: -8px 20px 47px 0px rgba(0,0,0,0.58);
+  box-shadow: -8px 20px 47px 0px rgba(0,0,0,0.58);
+}
+
+.LoginFooter {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 200;
+  line-height: normal;
+}
+
+.LoginFooter {
+  width: 100%;
+  gap: 16px;
+}
+
+input {
+  padding-block: 8px;
+  width: 100%;
+  border-radius: 20px;
+  border: 0.5px solid grey;
+}
+
+.LoginPageContainer button {
+  padding: 8px;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+}
+
+.ColumnModal button {
+  padding: 8px;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+}
+
+.RightSide button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  /* width: 100%; */
+  border-radius: 20px;
+  border: none;
+}
+
+.RightSide #plus {
+  width: 167px;
+  height: 48px;
+  background-color: #635FC7;
+  border-radius: 24px;
+  color: white;
+  font-family: "Plus Jakarta Sans";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+button:hover {
+  transform:scale(1.01);
+}
+
+.MainPage {
+  /* width: 100%; */
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #f4f7fd;
+}
+
+.MainNavbar {
+  transition: 750ms;
+  background-color: white;
+  padding: 24px 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.MainNavbar .LeftSide {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;  
+}
+
+.MainNavbar .RightSide {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content:center;
+  align-items: center;  
+}
+
+.MainNavbar .RightSide button {
+  background-color: transparent; 
+}
+
+.ColumnModal {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 16px;
+  border: 0.1px solid rgb(231, 231, 231);
+  animation: slide-up 0.7s ease-out;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1; 
+  }
+}
+
+
+.AddBoardModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Columns {
+  min-height: 590px;
+  max-height: 80vh;
+  width: 100%;
+  transition: 750ms;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 16px ;
+  height: auto;
+}
+
+.TaskColumn {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  gap: 16px;
+  text-align: center;
+  min-width: 250px;
+  word-wrap: break-word;
+  /* background-color: white; */
+  cursor: pointer;
+  color: grey;
+  padding: 24px;
+  font-size: 18px;
+}
+
+.ModalColumns {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ModalColumnNames {
+  padding: 8px;
+  color: grey;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 24px;
+  align-items: center;
+}
+
+.DesktopModalColumnNames {
+  transition: 750ms;
+  border-radius: 0px 100px 100px 0px;
+  height: 28px;
+  padding: 8px;
+  color: grey;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 24px;
+  align-items: center;
+}
+
+.ModalColumnNames.active {
+  background-color: rgb(99 95 199);
+  border-radius: 0px 16px 16px 0px;
+  color: white;
+  transition: 750ms;
+}
+
+.DesktopModalColumnNames.active {
+  background-color: rgb(99 95 199);
+  border-radius: 0px 16px 16px 0px;
+  color: white;
+  transition: 750ms;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: grey;
+  font-size: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2.4px;
+  margin-bottom: 24px;
+  
+  & .columnUpTitle {
+    margin-bottom: 18px;
+  }
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  padding-bottom: 20px;
+  font-size: 12px;
+}
+
+.task {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px 0px rgba(54, 78, 126, 0.10);
+  text-align: left;
+  transition: 550ms;
+  /* margin-bottom: 24px; */
+  & h4 {
+    color: black;
+    margin: 0;
+    font-family: Plus Jakarta Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0;
+    min-height: 19px;
+    font-feature-settings: 'clig' off, 'liga' off;
+  }
+
+  & span {
+    font-feature-settings: 'clig' off, 'liga' off;
+    /* Body (M) */
+    font-family: Plus Jakarta Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.4px;
+  }
+
+  & .taskTitles {
+    padding:16px 16px;
+    display: flex;
+    width: 248px;
+    min-height: 75px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    min-height: 56px;
+  }
+}
+
+.NewBoardText {
+  color: #8f54a0;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 24px;
+  align-items: center;
+  font-size: 14px;
+  & img {
+    size: 16px;
+  }
+  
+}
+
+.AddNewBoard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items:start;
+  min-height: 250px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #828FA3;
+
+
+
+  & button {
+    border: none;
+  }
+}
+
+.CreateNewColumnsInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  & Input {
+    width: 270px;
+  }
+}
+
+
+.updateTaskSelect {
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px 0px rgba(54, 78, 126, 0.10);
+  width: 100%;
+  border: 1px solid #828FA340;
+  padding: 8px;
+  display: flex;
+  text-align: center;
+
+}
+
+.updateSubTask {
+  display: flex;
+  background-color: #F4F7FD;
+  max-width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  /* margin-bottom: 2px; */
+  font-size: 12px;
+  gap: 16px;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.updateSubTask input {
+  width: 16px;
+}
+
+.AddTaskDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+
+  & button {
+    border: none;
+ 
+  }
+}
+
+.newSubtaskInput {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+@media screen and (width < 1920px){
+  .CreateNewColumnsInput input{
+    width: 93%;
+  }
+
+  .updateSubTask {
+    width: 100%;
+  }
+}
+
+@media screen and (width < 600px){
+  .desktopDiv {
+    min-width: 100%;
+  }
+  .Columns  {
+    width:100%;
+  }
+}
+
+@media screen and (width < 361px) {
+  .CreateNewColumnsInput input{
+    width: 90%;
+  }
+}
+
+
+
+
+
+.createColumnDiv {
+  color: #635FC7;
+  background-color: #625fc727;
+  margin-top: 40px;
+  padding: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  height: auto;
+}
+
+
+/* new col  */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: white;
+  padding: 8% 4%;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: smaller;
+  color: #828FA3;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ant-modal-title {
+  font-family: Plus Jakarta Sans !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 23px !important;
+  letter-spacing: 0px !important;
+  text-align: left ;
+
+}
+
+.switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+}
+
+.setTheme {
+  border-radius: 6px;
+  padding: 12px;
+  background-color:#F4F7FD ;
+}
+
+.allBoardsText {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2.4px;
+  color: #828FA3;
+}
+
+.DeleteOrEdit {
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  padding: 16px;
+  z-index: 9999;
+  background-color: white;
+  border-radius: 8px;
+  right: 16px;
+  top: 67px;
+}
+
+.DeleteOrEdit button {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  justify-content: left;
+  width: 160px;
+  height: 23px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px
+}
+
+.section {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* gap: 22px; */
+}
+
+
+.section button {
+  border: none;
+}
+
+.ant-modal-content {
+  width: 480px !important;
+}
+
+.ant-modal-title {
+  font-family: "Plus Jakarta Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px; /* 176.923% */
+}
+
+.columnUpTitle {
+  color: #828FA3;
+}
+
+.updateSubTask {
+  &:hover {
+    transition: 400ms;
+    background-color: #d8d7f1;
+    
+
+    span {
+      color: black;
+    }
+  }
+}
+
+
+.subtaskSection {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  /* width: fit-content; */
+  width: 416px;
+}
+
+.EditOrDeleteTask {
+  font-family: "Plus Jakarta Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px; /* 176.923% */
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  padding: 16px;
+  z-index: 9999;
+  background-color: white;
+  border-radius: 8px;
+  top: 70px;
+  right: -66px;
+  width: 160px;
+
+  & button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+}
+
+.descriptionText {
+  font-family: "Plus Jakarta Sans";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 23px; /* 176.923% */
+  color: #828FA3;
+  font-feature-settings: 'clig' off, 'liga' off;
+}
+
+.ant-modal-title {
+  max-width: 387px;
+}
+
+.EditTask {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  align-items:start;
+  min-height: 250px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0px;
+  text-align: left;
+  border: none;
+  color: #828FA3;
+}
+
+.columnUpTitle {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  
+  & img {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.LeftSide {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+@media screen and (width > 360px) {
+  .LeftSide #mobileShowColumns{
+    display: none;
+  }
+
+  .LeftSide #mobileİconKanban {
+    display: none;
+  }
+
+  #mobilePlus {
+    display: none;
+  }
+
+  .ModalColumns{
+    width: 276px;
+    & img {
+      margin-left: 32px;
+    }
+    
+  }
+}
+
+#desktopİconKanban {
+  padding-right: 72px;
+  margin-right: 52px;
+  width: 152px;
+  height: 25px;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #635FC7;
+  border-color: #635FC7;
+}
+
+.desktopColumn.active {
+  position: relative;
+
+  transition: 750ms;
+  padding-right: 30px;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+
+.createColumnDiv {
+  min-width: 167px;
+}
+
+.DesktopSetTheme {
+  transition: 650ms;
+  margin-left: 38px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  padding: 12px;
+  width: 200px;
+  background-color:#F4F7FD ;
+}
+
+.hideSideBar {
+  transition: 750ms;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 276px;
+  height: 48px;
+  font-family: "Plus Jakarta Sans";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #828FA3;
+
+  & img {
+    width: 18px;
+    height: 18px;
+    margin-left: 38px;
+  }
+}
+
+.hideSideBar:hover {
+  border-radius: 0px 100px 100px 0px;
+  background-color: #f0effa;
+  color: #635FC7;
+
+  & img {
+    color: #635FC7;
+  }
+}
+
+.openDesktopColumns {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 10px;
+  background-color: #A8A4FF;
+  border-radius: 0px 100px 100px 0px;
+  width: 56px;
+  height: 48px;
+
+
+}
+
+:root {
+  overflow: hidden;
+}
+
+@media screen and (width < 361px) {
+
+  .desktopColumn{
+    display: none !important;
+  }
+
+  #desktopİconKanban {
+    display: none;
+  }
+
+  #plus {
+    display: none;
+  }
+
+  .MainNavbar .LeftSide {
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .MainNavbar .RightSide {
+    gap: 6px;
+  }
+
+  .ant-modal-content {
+    width: 345px !important;
+  }
+
+  .section {
+    flex-direction: column;
+    gap: 12px;
+    & button {
+      width: 100% !important;
+    }
+  }
+
+  .updateSubTask {
+    width: 67%;
+  }
+}
+
+@media screen and (width < 361px) {
+  .CreateNewColumnsInput input{
+    width: 90%;
+  }
+}
+
+.DesktopModalColumnNames.deactive:hover {
+  background-color: #FFF;
+  border-radius: 0px 100px 100px 0px;
+}
+
+.desktopColumn.deactive {
+  opacity: 0;
+  transition: 500ms;
+  margin-left: -280px;
+}
+
+@media screen and (height > 930px) {
+  .Columns{
+    max-height: 805px !important;
+    min-height: 805px !important;
+  }
+}
