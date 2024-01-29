@@ -63,7 +63,7 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
       footer={null}
       title={selectedColumn.title}
       open={IsOpen}
-      closeIcon={<img src="../../../public/image/Group 5.svg" />}
+      closeIcon={<img src="image\Group 5.svg" />}
       centered={true}
       onCancel={ (e) => {
         handleChangeEditOrDeleteTask(e.target.localName)

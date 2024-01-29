@@ -10,8 +10,8 @@ const LeftSide = ({ChangeAllData,AllData,ChangeSelectedBoard,selectedBoard,theme
 
     return(
         <div className="LeftSide">
-            <img id="mobileİconKanban" src="image\Group 15.svg" alt="" />
-            {theme ? <img id="desktopİconKanban" src="public\image\Group 16 (1).png" alt="" />:<img id="desktopİconKanban" src="public\image\Group 16.png" alt="" />}
+            <img id="mobileİconKanban" src="Group 15.svg" alt="" />
+            {theme ? <img id="desktopİconKanban" src="image\Group 16 (1).png" alt="" />:<img id="desktopİconKanban" src="image\Group 16.png" alt="" />}
             <span style={{color:`${theme ? "white":""}`}}>{AllData["boards"][selectedBoard].name}</span>
             <ColumnBtn 
                 setTheme={setTheme}

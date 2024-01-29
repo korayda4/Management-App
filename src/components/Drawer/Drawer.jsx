@@ -25,7 +25,7 @@ const Drawer = ({ChangeSelectedBoard,selectedBoard,changeAllData,setAllData,AllD
                 Toplam ({Toplam})
                 {AllData["boards"][selectedBoard].name}
                 <div className="NewBoardText">
-                    <img src="../../../public/image/fluent_board-split-24-regular.png" alt="classİcon" onClick={setAddBoardModal}/> 
+                    <img src="image\fluent_board-split-24-regular.png" alt="classİcon" onClick={setAddBoardModal}/> 
                     <span onClick={setAddBoardModal}>+Create New Board</span>
                 </div>
             </div>         

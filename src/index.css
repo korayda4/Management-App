@@ -15,7 +15,7 @@
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #8f54a0;
+    background-color: #ffffff;
     border-radius: 10px;
     border: 3px solid #ffffff00;
   }
@@ -755,6 +755,7 @@ label {
 }
 
 .hideSideBar {
+  cursor: pointer;
   transition: 750ms;
   display: flex;
   align-items: center;

@@ -53,13 +53,13 @@ const DesktopDrawer = ({
                 <div className="drawerBottom" style={{position:"absolute",bottom:"10px",left:"0"}}>
                     <div style={{backgroundColor:`${theme ? "#20212C":""}`}} className="DesktopSetTheme">
                         <div  className="switch">
-                            <img src="public\image\Combined Shape (1).png" alt="" />
+                            <img src="image\Combined Shape (1).png" alt="" />
                             <Switch style={{backgroundColor:"#635FC7",width:"12px"}} defaultChecked={theme} onChange={() => {setTheme(!theme)}} />
-                            <img src="public\image\Combined Shape.png" alt="" />
+                            <img src="image\Combined Shape.png" alt="" />
                         </div>
                     </div>
                     <div className="hideSideBar" onClick={() => {setDesktopColumnIsOpen(!DesktopColumnIsOpen)}}>
-                        <img style={{cursor:"pointer"}} src="public\image\eye-slash.1.png" alt="eye-Slash" />
+                        <img style={{cursor:"pointer"}} src="image\eye-slash.1.png" alt="eye-Slash" />
                         <span style={{cursor:"pointer"}}>Hide Sidebar</span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ const DesktopDrawer = ({
                 />
             </div>
             <div  className="openDesktopColumns" style={DesktopColumnIsOpen ? {display:"none" }:{display:"flex"}} onClick={() => {setDesktopColumnIsOpen(!DesktopColumnIsOpen)}}>
-                <img style={{cursor:"pointer"}} src="public\image\eye.png" alt="eye" />
+                <img style={{cursor:"pointer"}} src="image\eye.png" alt="eye" />
             </div>
         </>
        

@@ -80,7 +80,7 @@ const MainPage = () => {
         </div>
       );
     });
-   const oval = ["public/image/Oval.png","public/image/Oval (1).png","public/image/Oval (2).png","public/image/Oval.png","public/image/Oval (1).png","public/image/Oval (2).png"]
+   const oval = ["image/Oval.png","image/Oval (1).png","image/Oval (2).png","image/Oval.png","image/Oval (1).png","image/Oval (2).png"]
     return (
       <div className="column" style={{ textAlign: "left" }} key={columnIndex}>
         <div className="columnUpTitle">
