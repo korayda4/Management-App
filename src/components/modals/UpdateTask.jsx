@@ -113,7 +113,7 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
           <p>Subtask ({completedSubtasks} of {selectedColumn.subtasks.length})</p>
           {IsOpen
             ? selectedColumn?.subtasks.map((subtask, index) => (
-              <div  className='updateSubTask' key={index}>
+              <div  className='updateSubTask' style={{backgroundColor:`${subtaskStatus[index] ? "#00ff0021":""}`}}  key={index}>
                 <Checkbox 
                   id={index}
                   name={`option${index}`}
