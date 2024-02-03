@@ -7,7 +7,7 @@ const LeftSide = ({ChangeAllData,AllData,ChangeSelectedBoard,selectedBoard,theme
     const ShowColumnModal = () => {
         setShowColumn(!ShowColumn)
     }
-
+    
     return(
         <div className="LeftSide">
             <img id="mobileİconKanban" src="Group 15.svg" alt="" />
