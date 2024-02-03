@@ -1,4 +1,4 @@
-# Management App | Dynamic V1.0.0.0
+# Management App | Dynamic V1.0.0.1
 
 ## Features
 
