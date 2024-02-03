@@ -42,14 +42,16 @@ const DesktopDrawer = ({
     return (
         <> 
             <div style={{backgroundColor:`${theme ? "#2B2C37":""}`}} className={`desktopColumn ${DesktopColumnIsOpen ? "active":"deactive"}`}>
-                <div className="ModalColumns" >
-                    <span style={{marginLeft:"38px"}} className="allBoardsText">ALL BOARDS ({Toplam})</span>
-                    {BoardName}
+                <div className="upper" style={{display:"flex",gap:"6px",flexDirection:"column"}}>
+                    <span style={{textAlign:"left",margin:"12px 12px 12px 38px"}} className="allBoardsText">ALL BOARDS ({Toplam})</span>
+                    <div className="ModalColumns" >
+                        {BoardName}
+                    </div> 
                     <div style={{marginBottom:"24px"}} className="NewBoardText">
                         <img src="image/fluent_board-split-24-regular.png" alt="classİcon" onClick={setAddBoardModal}/> 
                         <span onClick={setAddBoardModal}>+Create New Board</span>
                     </div>
-                </div>         
+                </div>        
                 <div className="drawerBottom" style={{position:"absolute",bottom:"10px",left:"0"}}>
                     <div style={{backgroundColor:`${theme ? "#20212C":""}`}} className="DesktopSetTheme">
                         <div  className="switch">

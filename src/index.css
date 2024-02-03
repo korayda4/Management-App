@@ -211,6 +211,8 @@ button:hover {
 .ModalColumns {
   display: flex;
   flex-direction: column;
+  max-height: 400px;
+  overflow: auto;
   gap: 16px;
 }
 
@@ -326,8 +328,10 @@ button:hover {
 }
 
 .NewBoardText {
-  color: #8f54a0;
+  border-radius: 0px 100px 100px 0px;
+  height: 28px;
   padding: 8px;
+  color: grey;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -335,8 +339,11 @@ button:hover {
   justify-content: left;
   gap: 24px;
   align-items: center;
+  color: #8f54a0;
+  align-items: center;
   font-size: 14px;
   & img {
+    margin-left: 32px;
     size: 16px;
   }
   
@@ -870,4 +877,20 @@ label {
     max-height: 805px !important;
     min-height: 805px !important;
   }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-spinner {
+  color: white;
 }
