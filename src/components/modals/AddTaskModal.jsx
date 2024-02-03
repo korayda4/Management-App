@@ -45,14 +45,11 @@ const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllDa
             })),
         
         };
-
-        const columnIndex = AllData['boards'][selectedBoard].columns.findIndex((column) => column.name === selectedStatus);
-        if (columnIndex !== -1) {
-            const updatedData = { ...AllData };
-            updatedData['boards'][selectedBoard].columns[columnIndex].tasks.push(newTask);
-            changeAllData(updatedData);
-            console.log(AllData);
-        }
+        let columnIndex = AllData['boards'][selectedBoard].columns.findIndex((column) => column.name === selectedStatus);
+        if (columnIndex == -1) {columnIndex = 0}
+        const updatedData = { ...AllData };
+        updatedData['boards'][selectedBoard].columns[columnIndex].tasks.push(newTask);
+        changeAllData(updatedData);
 
         ChangeIsOpenAddTask();
     };
