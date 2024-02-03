@@ -21,10 +21,10 @@ const MainPage = () => {
     setSelectedBoard(x);
   };
 
-  const showMessageDelete = (title1,title2) => {
+  const showMessageDelete = (title1,type) => {
     messageApi.open({
-      type: 'success',
-      content: `${title1} was ${title2} successfully `,
+      type: type,
+      content: `${title1}`,
   })
   console.log("deneme");
   }
@@ -42,6 +42,9 @@ const MainPage = () => {
     SetIsOpen(!IsOpen);
   };
 
+  const dragTask = (e) => {
+  }
+
   const createColumn = AllData.boards[selectedBoard]?.columns.map((column, columnIndex) => {
     if (column == "") return
     const createColumnTask = column.tasks.map((task, taskIndex) => {
@@ -49,6 +52,9 @@ const MainPage = () => {
 
       return (
         <div 
+          draggable={true}
+          onDrag={(e) => dragTask(e)}
+          onDragEnd={(e) => {console.log(e)}}
           style={{backgroundColor:`${theme ? "#2B2C37":""}`,color:`${theme ? "#828FA3":""}`}}
           className="task" 
           key={taskIndex} 
@@ -107,6 +113,7 @@ const MainPage = () => {
           selectedBoard={selectedBoard}
         />
         <RightSide 
+          setSelectedBoard={setSelectedBoard}
           showMessageDelete={showMessageDelete}
           theme={theme}
           AllData={AllData}
