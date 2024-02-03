@@ -19,7 +19,6 @@ const MainPage = () => {
   const [theme, setTheme] = useState(false);
 
   useEffect(() => {
-    // AllData güncellendiğinde local storage'a kaydet
     localStorage.setItem('myData', JSON.stringify(AllData));
   }, [AllData]);
 
@@ -48,14 +47,7 @@ const MainPage = () => {
     SetIsOpen(!IsOpen);
   };
 
-  const UpdateLocalStorage = () => {
-    const data = { example: 'data' };
-    const jsonData = JSON.stringify(data);
-    localStorage.setItem('myData', jsonData);
-  }
-
   const dragTask = (e) => {
-    // Burada task sürükleme işlemlerini gerçekleştirebilirsiniz
   }
 
   const createColumn = AllData.boards[selectedBoard]?.columns.map((column, columnIndex) => {
