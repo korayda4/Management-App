@@ -65,7 +65,6 @@ const EditBoard = ({
     
     <Modal
       centered={true}
-
       footer={null}
       title="Edit Board"
       open={IsOpenEditBoard}

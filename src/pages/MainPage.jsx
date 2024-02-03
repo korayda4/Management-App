@@ -7,15 +7,21 @@ import CreateNewColumn from "./createNewColumn";
 import DesktopDrawer from "../components/Navbar/MainNavbar/desktopDrawer";
 import { message } from 'antd';
 
-
 const MainPage = () => {
   const [IsOpen, SetIsOpen] = useState(false);
   const [taskData, SetTaskData] = useState({});
   const [selectedBoard, setSelectedBoard] = useState(0);
-  const [AllData, setAllData] = useState(allData);
+  const [AllData, setAllData] = useState(() => {
+    const storedData = localStorage.getItem('myData');
+    return storedData ? JSON.parse(storedData) : allData;
+  });
   const [messageApi, contextHolder] = message.useMessage();
-  const [theme,setTheme] = useState(false)
+  const [theme, setTheme] = useState(false);
 
+  useEffect(() => {
+    // AllData güncellendiğinde local storage'a kaydet
+    localStorage.setItem('myData', JSON.stringify(AllData));
+  }, [AllData]);
 
   const ChangeSelectedBoard = (x) => {
     setSelectedBoard(x);
@@ -25,8 +31,8 @@ const MainPage = () => {
     messageApi.open({
       type: type,
       content: `${title1}`,
-  })
-  console.log("deneme");
+    })
+    console.log("deneme");
   }
 
   const changeAllData = (x) => {
@@ -42,7 +48,14 @@ const MainPage = () => {
     SetIsOpen(!IsOpen);
   };
 
+  const UpdateLocalStorage = () => {
+    const data = { example: 'data' };
+    const jsonData = JSON.stringify(data);
+    localStorage.setItem('myData', jsonData);
+  }
+
   const dragTask = (e) => {
+    // Burada task sürükleme işlemlerini gerçekleştirebilirsiniz
   }
 
   const createColumn = AllData.boards[selectedBoard]?.columns.map((column, columnIndex) => {
@@ -86,7 +99,9 @@ const MainPage = () => {
         </div>
       );
     });
-   const oval = ["image/Oval.png","image/Oval (1).png","image/Oval (2).png","image/Oval.png","image/Oval (1).png","image/Oval (2).png"]
+
+    const oval = ["image/Oval.png","image/Oval (1).png","image/Oval (2).png","image/Oval.png","image/Oval (1).png","image/Oval (2).png"];
+
     return (
       <div className="column" style={{ textAlign: "left" }} key={columnIndex}>
         <div className="columnUpTitle">
@@ -122,37 +137,36 @@ const MainPage = () => {
           selectedBoard={selectedBoard} 
         />
       </div>
-        <div className="desktopDiv" style={{display:"flex"}}>
-          <DesktopDrawer
-            setTheme={setTheme}
+      <div className="desktopDiv" style={{display:"flex"}}>
+        <DesktopDrawer
+          setTheme={setTheme}
+          theme={theme}
+          AllData={AllData}
+          ChangeSelectedBoard={ChangeSelectedBoard}
+          selectedBoard={selectedBoard}
+          ChangeAllData={ChangeAllData}
+        />
+        <div style={{backgroundColor:`${theme ? "#20212C":""}`}} className="Columns">
+          {createColumn}
+          <CreateNewColumn 
             theme={theme}
-            AllData={AllData}
-            ChangeSelectedBoard={ChangeSelectedBoard}
+            setAllData={setAllData} 
+            AllData={AllData} 
             selectedBoard={selectedBoard}
-            ChangeAllData={ChangeAllData}
           />
-          <div style={{backgroundColor:`${theme ? "#20212C":""}`}} className="Columns">
-            {createColumn}
-            <CreateNewColumn 
-              theme={theme}
-              setAllData={setAllData} 
-              AllData={AllData} 
-              selectedBoard={selectedBoard}
-            />
-          </div>
         </div>
+      </div>
       {IsOpen 
         && <UpdateTask 
-              
-                theme={theme}
-                showMessageDelete={showMessageDelete}
-                setAllData={setAllData} 
-                selectedBoard={selectedBoard} 
-                allData={AllData} 
-                IsOpen={IsOpen} 
-                SetIsOpen={SetIsOpen} 
-                taskData={taskData} 
-            />}
+          theme={theme}
+          showMessageDelete={showMessageDelete}
+          setAllData={setAllData} 
+          selectedBoard={selectedBoard} 
+          allData={AllData} 
+          IsOpen={IsOpen} 
+          SetIsOpen={SetIsOpen} 
+          taskData={taskData} 
+        />}
     </div>
   );
 };
