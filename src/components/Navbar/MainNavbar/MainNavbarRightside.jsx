@@ -4,7 +4,7 @@ import EditBoard from "../../modals/EditBoard";
 import DeleteOrEdit from "../../modals/DeleteOrEditBoard";
 import DeleteBoard from "../../modals/DeleteBoard";
 
-const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMessageDelete}) => {
+const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMessageDelete,setSelectedBoard}) => {
     const [IsOpenAddTask,setIsOpenAddTask] = useState(false)
     const [IsOpenEditBoard,setIsOpenEditBoard] = useState(false)
     const [IsOpenDeleteOrEdit,setIsOpenDeleteOrEdit] = useState(false)
@@ -53,6 +53,8 @@ const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMes
                 selectedBoard={selectedBoard}
                 IsOpenDelete={IsOpenDelete}
                 setIsOpenDelete={setIsOpenDelete}
+                setSelectedBoard={setSelectedBoard}
+
             />
             <EditBoard 
                 changeAllData={changeAllData}
