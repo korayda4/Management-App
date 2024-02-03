@@ -2,7 +2,7 @@ import Buttons from "../GeneralComponent/Button"
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 
-const DeleteBoard = ({IsOpenDelete,setIsOpenDelete,selectedBoard,AllData,setAllData,changeAllData,showMessageDelete}) => {
+const DeleteBoard = ({IsOpenDelete,setIsOpenDelete,selectedBoard,AllData,setAllData,changeAllData,showMessageDelete,setSelectedBoard}) => {
     const [temporaryData, setTemporaryData] = useState({ ...AllData });
 
     const changeIsOpenDelete = () => {
@@ -10,9 +10,12 @@ const DeleteBoard = ({IsOpenDelete,setIsOpenDelete,selectedBoard,AllData,setAllD
     }
 
     const handleDeleteBoard = () => {
+        
         const allDataCopy = { ...temporaryData };
-        showMessageDelete("Board","Deleted")
+        if(AllData["boards"].length <= 1){return (showMessageDelete("could not be deleted because there is no other board","warning"))}
+        showMessageDelete("Board was deleted","success")
         allDataCopy.boards.splice(selectedBoard, 1)
+        selectedBoard == 0 ? setSelectedBoard(0):setSelectedBoard(selectedBoard-1)
         setAllData(allDataCopy)
         changeIsOpenDelete()
     }
