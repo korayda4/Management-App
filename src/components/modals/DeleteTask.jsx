@@ -8,7 +8,7 @@ const DeleteTask = ({IsOpenDeleteTask,AllData,selectedBoard,selectedTaskIndex,se
 
     const handleDeleteTask = () => {
         const allDataCopy = { ...AllData  };
-        showMessageDelete("Task","deleted")
+        showMessageDelete("Task was deleted","success")
         console.log(allDataCopy["boards"][selectedBoard]?.columns[selectedColumnIndex]?.tasks[selectedTaskIndex]);
         allDataCopy["boards"][selectedBoard]?.columns[selectedColumnIndex]?.tasks.splice(selectedTaskIndex, 1)
         changeAllData(allDataCopy)
