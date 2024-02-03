@@ -394,6 +394,7 @@ button:hover {
   max-width: 100%;
   padding: 8px;
   border-radius: 8px;
+  transition: 750ms;
   /* margin-bottom: 2px; */
   font-size: 12px;
   gap: 16px;
