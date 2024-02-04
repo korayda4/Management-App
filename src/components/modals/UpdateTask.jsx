@@ -8,10 +8,8 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
   const [IsOpenDeleteOrEditTask, setIsOpenDeleteOrEditTask] = useState(false);
   const [IsOpenDeleteTask, setIsOpenDeleteTask] = useState(false);
   const [IsOpenEditTask, setIsOpenEditTask] = useState(false);
-  const [selectedTaskStatus, setselectedTaskStatus] = useState(0);
   const selectedColumnIndex = taskData[0];
   const selectedTaskIndex = taskData[1];
-  const [defaultSelect, setdefaultSelect] = useState(allData["boards"][selectedBoard]?.columns[selectedColumnIndex]?.tasks[selectedTaskIndex]?.status);
   const [subtaskStatus, setSubtaskStatus] = useState(
     allData["boards"][selectedBoard]?.columns[selectedColumnIndex]?.tasks[selectedTaskIndex]?.subtasks.map(subtask => subtask.isCompleted) || []
   );
@@ -19,10 +17,6 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
   if (selectedColumnIndex !== undefined && selectedTaskIndex !== undefined) {
     selectedColumn = allData?.boards[selectedBoard]?.columns[selectedColumnIndex]?.tasks[selectedTaskIndex];
   }
-
-  useEffect(() => {
-    setdefaultSelect(allData["boards"][selectedBoard]?.columns[selectedColumnIndex]?.tasks[selectedTaskIndex].status)
-  }, [allData, selectedBoard, selectedColumnIndex, selectedTaskIndex]);
 
   const handleChangeOpenEditTask = () => {
     setIsOpenDeleteOrEditTask(!IsOpenDeleteOrEditTask)
@@ -42,21 +36,6 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
     setIsOpenDeleteTask(!IsOpenDeleteTask)
   }
 
-  const handleChangeTaskName = (e) => {
-    showMessageDelete("Task Status","Updated")
-    console.log(e.target.value);
-    const updatedAllData = { ...allData };
-    updatedAllData["boards"][selectedBoard].columns[selectedColumnIndex].tasks[selectedTaskIndex].status = updatedAllData["boards"][selectedBoard].columns[e.target.value]
-    const changedTask = updatedAllData["boards"][selectedBoard].columns[selectedColumnIndex].tasks[selectedTaskIndex]
-    updatedAllData["boards"][selectedBoard].columns[selectedColumnIndex].tasks.splice(selectedTaskIndex,1)
-    updatedAllData["boards"][selectedBoard].columns[e.target.value].tasks.push(changedTask)
-    setAllData(updatedAllData);
-    setdefaultSelect(updatedAllData["boards"][selectedBoard]?.columns[selectedColumnIndex]?.tasks[selectedTaskIndex].status)
-    SetIsOpen()
-    
-  }
-
-  console.log(defaultSelect);
   const completedSubtasks = selectedColumn.subtasks.filter(subtask => subtask.isCompleted).length;
   return (
     <Modal
@@ -136,18 +115,6 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
             ))
             : null}
         </div>
-        Current Status
-        <select defaultValue={defaultSelect} className="updateTaskSelect" onChange={(e) => {handleChangeTaskName(e)}} >
-          {IsOpen
-            ? allData?.boards[selectedBoard]?.columns.map((column, index) => {
-              return(
-              <option key={index} id={index} value={index} >
-                {column.name}
-              </option>
-            )
-          })
-            : null}
-        </select>
       </div>
     </Modal>
   );
