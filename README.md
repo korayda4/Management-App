@@ -1,4 +1,4 @@
-# Management App | Dynamic V1.0.0.1
+# Management App | Dynamic V1.0.0.2
 
 ## Features
 
@@ -28,7 +28,7 @@
 
 ### 8) Responsive Design
 
-### 9) The status of tasks can be changed by drag and drop (will be added)
+### 9) The status of tasks can be changed by drag and drop
 
 ### 10) Language selection selectable (will be added)
 
