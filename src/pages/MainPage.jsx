@@ -15,6 +15,8 @@ const MainPage = () => {
     const storedData = localStorage.getItem('myData');
     return storedData ? JSON.parse(storedData) : allData;
   });
+  const [dragedTask , setDragedTask] = useState("")
+  const [OnDragedTask , setOnDragedTask] = useState("")
   const [messageApi, contextHolder] = message.useMessage();
   const [theme, setTheme] = useState(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -25,7 +27,7 @@ const MainPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1300);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [AllData]);
@@ -63,8 +65,19 @@ const MainPage = () => {
     SetIsOpen(!IsOpen);
   };
 
-  const dragTask = (e) => {
-    // Burada task sürükleme işlemlerini gerçekleştirebilirsiniz
+  const dragTask = () => {
+    const temporaryData = {...AllData}
+    const veriableName = temporaryData["boards"][selectedBoard].columns
+    if(veriableName[dragedTask.dataset.value] == veriableName[OnDragedTask.dataset.value]){
+      showMessageDelete("You can't do it","error")
+    }else {
+      const AddedTask = veriableName[dragedTask.dataset.value].tasks[dragedTask.id]
+      AddedTask.status = veriableName[OnDragedTask.dataset.value].tasks[OnDragedTask.id].status
+      veriableName[dragedTask.dataset.value].tasks.splice(dragedTask.id,1)
+      veriableName[OnDragedTask.dataset.value].tasks.push(AddedTask)
+      setAllData(temporaryData)
+      showMessageDelete("Task Status Successfuly Update","success");
+    }
   };
 
   const createColumn = AllData.boards[selectedBoard]?.columns.map((column, columnIndex) => {
@@ -75,8 +88,9 @@ const MainPage = () => {
       return (
         <div
           draggable={true}
-          onDrag={(e) => dragTask(e)}
-          onDragEnd={(e) => { console.log(e) }}
+          onDragStart={(e) => {setDragedTask(e.target)}}
+          onDragOver={(e) => {setOnDragedTask(e.target)}}
+          onDragEnd={dragTask}
           style={{ backgroundColor: `${theme ? "#2B2C37" : ""}`, color: `${theme ? "#828FA3" : ""}` }}
           className="task"
           key={taskIndex}
@@ -112,7 +126,7 @@ const MainPage = () => {
     const oval = ["image/Oval.png", "image/Oval (1).png", "image/Oval (2).png", "image/Oval.png", "image/Oval (1).png", "image/Oval (2).png"];
 
     return (
-      <div className="column" style={{ textAlign: "left" }} key={columnIndex}>
+      <div className="column" style={{ textAlign: "left" }} id={columnIndex} key={columnIndex}>
         <div className="columnUpTitle">
           <img src={oval[columnIndex]} alt="ico" />
           {column.name.toUpperCase()} ({column.tasks.length})
