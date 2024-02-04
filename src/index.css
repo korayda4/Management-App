@@ -457,10 +457,6 @@ button:hover {
   }
 }
 
-
-
-
-
 .createColumnDiv {
   color: #635FC7;
   background-color: #625fc727;
@@ -472,9 +468,6 @@ button:hover {
   border-radius: 12px;
   height: auto;
 }
-
-
-/* new col  */
 
 .modalOverlay {
   position: fixed;
@@ -578,9 +571,7 @@ label {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* gap: 22px; */
 }
-
 
 .section button {
   border: none;
@@ -595,7 +586,7 @@ label {
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
-  line-height: 23px; /* 176.923% */
+  line-height: 23px;
 }
 
 .columnUpTitle {
@@ -614,12 +605,10 @@ label {
   }
 }
 
-
 .subtaskSection {
   display: flex;
   gap: 8px;
   flex-direction: column;
-  /* width: fit-content; */
   width: 416px;
 }
 
@@ -628,7 +617,7 @@ label {
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
-  line-height: 23px; /* 176.923% */
+  line-height: 23px;
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -654,7 +643,7 @@ label {
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
-  line-height: 23px; /* 176.923% */
+  line-height: 23px;
   color: #828FA3;
   font-feature-settings: 'clig' off, 'liga' off;
 }
@@ -700,7 +689,7 @@ label {
   line-height: normal;
 }
 
-@media screen and (width > 360px) {
+@media screen and (width > 361px) {
   .LeftSide #mobileShowColumns{
     display: none;
   }
@@ -746,7 +735,6 @@ label {
   align-items: center;
   background-color: white;
 }
-
 
 .createColumnDiv {
   min-width: 167px;
@@ -804,8 +792,6 @@ label {
   border-radius: 0px 100px 100px 0px;
   width: 56px;
   height: 48px;
-
-
 }
 
 :root {
