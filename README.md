@@ -28,7 +28,7 @@
 
 ### 8) Responsive Design
 
-### 9) The status of tasks can be changed by drag and drop
+### 9) The status of tasks can be changed by drag and drop (added)
 
 ### 10) Language selection selectable (will be added)
 
