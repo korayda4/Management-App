@@ -5,7 +5,8 @@ const DeleteOrEdit = ({
     changeIsOpenEditBoard,
     changeIsOpenDeleteOrEdit,
     changeIsOpenDelete,
-    theme
+    theme,
+    language
     
 }) => {
 
@@ -23,13 +24,13 @@ const DeleteOrEdit = ({
         <div style={{display:`${IsOpen ? "flex":"none"}`,backgroundColor:`${theme ? "#2B2C37":""}`}} className="DeleteOrEdit">
             <Buttons
                 onClick={setEdits}
-                title={"Edit Board"}
                 color="#828FA3"
+                title={language ? "Edit Board":"Tahtayı Düzenle"}
             />
             <Buttons
                 onClick={setDeleteModal}
                 color="#EA5555"
-                title={"Delete Board"}
+                title={language ? "Delete Board":"Tahtayı Sil"}
             />
         </div>
     )

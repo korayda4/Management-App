@@ -211,7 +211,7 @@ button:hover {
 .ModalColumns {
   display: flex;
   flex-direction: column;
-  max-height: 400px;
+  max-height: 330px;
   overflow: auto;
   gap: 16px;
 }
@@ -458,15 +458,14 @@ button:hover {
 }
 
 .createColumnDiv {
+  height: 100%;
   color: #635FC7;
-  background-color: #625fc727;
   margin-top: 40px;
   padding: 36px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  height: auto;
 }
 
 .modalOverlay {
@@ -879,4 +878,10 @@ label {
 
 .loading-spinner {
   color: white;
+}
+
+@media screen and (height > 930px) {
+  .ModalColumns{
+    max-height: 540px;
+  }
 }

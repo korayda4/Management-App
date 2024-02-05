@@ -12,6 +12,7 @@ const AddBoardModal = ({
   BoardName,
   AllData,
   ChangeAllData,
+  language
 }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [inputValue, setInputValue] = useState("");
@@ -21,7 +22,7 @@ const AddBoardModal = ({
     if (inputValue == ""){
       messageApi.open({
         type: 'warning',
-        content: 'Please Enter Board Name!',
+        content: `${language ? 'Please Enter Board Name!':"Lütfen Pano İsmi Girin"}`,
       });
       return
     }
@@ -38,10 +39,9 @@ const AddBoardModal = ({
 
     messageApi.open({
       type: 'success',
-      content: 'New Board Succesfuly Created',
+      content: `${language ? 'New Board Succesfuly Created':"Yeni Pano başarıyla oluşturuldu"}`,
     });
     SetIsOpen();
-    // Input değerlerini ve yeni eklenen inputları sıfırla
     setInputValue("");
     setNewInputs([]);
 
@@ -64,7 +64,7 @@ const AddBoardModal = ({
       centered={true}
 
       footer={null}
-      title="Add New Board"
+      title={language ? "Add New Board":"Yeni Pano Oluştur"}
       open={IsOpen}
       onOk={addBoard}
       onCancel={() => {
@@ -78,14 +78,14 @@ const AddBoardModal = ({
     >
       {contextHolder}
       <div className="AddNewBoard">
-        <span style={{marginTop:"12px"}}>Board Name</span>
+        <span style={{marginTop:"12px"}}>{language ? "Board Name":"Pano Adı"}</span>
         <MyInput
           marginB={"16px"}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Board Name"
         />
-        <span>Board Columns</span>
+        <span>{language ? "Board Columns":"Pano Sütunları"}</span>
         <div className="CreateNewColumnsInput">
           <Input placeholder="Todo" disabled />
           <img src="image/Group 18.png" alt="Delete icon" style={{ height: "16px" }} />
@@ -97,7 +97,7 @@ const AddBoardModal = ({
         {newInputs.map((input, index) => (
           <div id={index} className="CreateNewColumnsInput" key={index}>
             <Input
-              placeholder={"Enter Column Name"} 
+              placeholder={language ? "Enter Column Name":"Sütun ismi gir"} 
               value={input}
               onChange={(e) => {
                 const updatedInputs = [...newInputs];
@@ -112,7 +112,7 @@ const AddBoardModal = ({
         <Buttons
           onClick={addNewInput}
           radius="32px"
-          title="+Add New Column"
+          title={language ? "+Add New Column":"+Yeni Sütun Ekle"}
           color="#635FC7"
           bgcolor="#635FC71A"
           width={"100%"}
@@ -124,7 +124,7 @@ const AddBoardModal = ({
             addBoard();
           }}
           radius="32px"
-          title="Create New Board"
+          title={language ? "Create New Board":"Yeni Pano Oluştur"}
           color="white"
           bgcolor="#635FC7"
           width={"100%"}

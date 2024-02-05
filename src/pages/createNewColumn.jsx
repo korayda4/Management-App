@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button,Input,message } from 'antd';
 
-const CreateNewColumn = ({ setAllData, AllData, selectedBoard , theme }) => {
+const CreateNewColumn = ({ setAllData, AllData, selectedBoard , theme ,language}) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [showModal, setShowModal] = useState(false);
   const [newColumnName, setNewColumnName] = useState('');
@@ -12,7 +12,7 @@ const CreateNewColumn = ({ setAllData, AllData, selectedBoard , theme }) => {
 
   const handleModalClose = () => {
     setShowModal(false);
-    setNewColumnName(''); // Modal kapatıldığında input değerini sıfırla
+    setNewColumnName('');
   };
 
   const handleInputChange = (e) => {
@@ -21,7 +21,6 @@ const CreateNewColumn = ({ setAllData, AllData, selectedBoard , theme }) => {
 
   const handleCreateColumn = () => {
     if (newColumnName.trim() === '') {
-      // Boş isim girişi engelleniyor
       messageApi.open({
         type: 'warning',
         content: 'Please Enter Column Name ',
@@ -34,21 +33,18 @@ const CreateNewColumn = ({ setAllData, AllData, selectedBoard , theme }) => {
       tasks: [],
     };
 
-    // Yeni sütunu ekleyin, ancak AllData'yı doğrudan değiştirmeyin
     const updatedBoards = [...AllData.boards];
     updatedBoards[selectedBoard].columns.push(newCol);
 
-    // setAllData ile güncellenmiş kopyayı state'e atayın
     setAllData({ ...AllData, boards: updatedBoards });
 
-    // Modalı kapat ve input değerini sıfırla
     handleModalClose();
   };
 
   return (
     <div style={{backgroundColor:`${theme ? "#2B2C3740":""}`}}  className="createColumnDiv">
       {contextHolder}
-      <div style={{cursor:"pointer",color:"#828FA3"}} onClick={handleModalOpen}>+Create New Column</div>
+      <div style={{cursor:"pointer",color:"#828FA3"}} onClick={handleModalOpen}>{language ? "+Create New Column":"+Yeni Sütun oluştur"}</div>
 
       {showModal && (
         <div className="modalOverlay">
@@ -61,12 +57,9 @@ const CreateNewColumn = ({ setAllData, AllData, selectedBoard , theme }) => {
               type="text"
               value={newColumnName}
               onChange={handleInputChange}
-              placeholder='Enter Column Name'
+              placeholder={language ?'Enter Column Name':"Sütun ismi gir"}
             />
-            
-            <Button style={{backgroundColor:"#635FC7",color:"white",borderRadius:"20px"}} onClick={handleCreateColumn}>Create Column</Button>
-            
-            <label>Note:Create New Column</label>
+            <Button style={{backgroundColor:"#635FC7",color:"white",borderRadius:"20px"}} onClick={handleCreateColumn}>{language ? "Create Column":"Yeni Sütun Oluştur"}</Button>
           </div>
         </div>
       )}

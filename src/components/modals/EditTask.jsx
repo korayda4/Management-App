@@ -12,7 +12,8 @@ const EditTask = ({
   handleChangeOpenEditTask,
   selectedColumnIndex,
   selectedTaskIndex,
-  setAllData
+  setAllData,
+  language
 }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [UpdatedInputs, setUpdatedInputs] = useState("");
@@ -39,7 +40,7 @@ const EditTask = ({
 
     messageApi.open({
       type: 'success',
-      content: 'Task was edited successfully ',
+      content: `${language ? 'Task was edited successfully ':"Görev başarıyla güncellendi"}`,
     })
 
     handleChangeOpenEditTask()
@@ -72,7 +73,7 @@ const EditTask = ({
     <Modal
       centered={true}
       footer={null}
-      title="Edit Task"
+      title={language ? "Edit Task":"Görevi Düzenle"}
       open={IsOpenEditTask}
       onCancel={() => {
         handleChangeOpenEditTask()
@@ -82,14 +83,14 @@ const EditTask = ({
     >
       {contextHolder}
       <div className="EditTask">
-        Title
+        {language ? "Title":"Görev Adı"}
         <MyInput
           value={taskTitle}
           onChange={(e) => {settaskTitle(e.target.value)}}
-          placeholder="Board Name"
+          placeholder="Task Title"
           marginB={"12px"}
         />
-        Description
+        {language ? "Description":"Açıklama"}
         <TextArea 
             rows={4} 
             value={description}
@@ -97,7 +98,7 @@ const EditTask = ({
             placeholder='e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little.'
             style={{maxHeight:"125px",minHeight:"100px"}}
         />
-        Subtasks
+        {language ? "Subtasks":"Alt Görev"}
         {newInputs.map((input, index) => (
           <div id={index.toString()} className="CreateNewColumnsInput" key={index}>
             <Input
@@ -125,7 +126,7 @@ const EditTask = ({
         <Buttons
           onClick={addNewInput}
           radius="32px"
-          title="+Add New Subtask"
+          title={language ? "+Add New Subtask":"+Yeni Alt Görev Ekle"}
           color="#635FC7"
           bgcolor="#635FC71A"
           width={"100%"}
@@ -135,7 +136,7 @@ const EditTask = ({
         <Buttons
           onClick={updateBoard}
           radius="32px"
-          title="Update Task"
+          title={language ? "Update Task":"Görevi Güncelle"}
           color="white"
           bgcolor="#635FC7"
           width={"100%"}

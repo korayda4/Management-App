@@ -4,7 +4,7 @@ import Buttons from '../GeneralComponent/Button';
 import DeleteTask from './DeleteTask';
 import EditTask from './EditTask';
 
-const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAllData ,showMessageDelete , theme}) => {
+const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAllData ,showMessageDelete , theme,language}) => {
   const [IsOpenDeleteOrEditTask, setIsOpenDeleteOrEditTask] = useState(false);
   const [IsOpenDeleteTask, setIsOpenDeleteTask] = useState(false);
   const [IsOpenEditTask, setIsOpenEditTask] = useState(false);
@@ -53,17 +53,18 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
           <Buttons
             onClick={handleChangeOpenEditTask}
             bgcolor={"transparent"}
-            title={"Edit Task"}
+            title={language ? "Edit Task":"Görevi Düzenle"}
             color={"#828FA3"}
           />
           <Buttons
             onClick={handleChangeDeleteTask}
             bgcolor={"transparent"}
-            title={"Delete Task"}
+            title={language ? "Delete Task":"Görevi Sil"}
             color={"#EA5555"}
           />
         </div>
         <DeleteTask
+          language={language}
           showMessageDelete={showMessageDelete}
           SetIsOpen={SetIsOpen}
           setIsOpenDeleteTask={setIsOpenDeleteTask}
@@ -76,6 +77,7 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
           changeAllData={setAllData}
         />
         <EditTask
+          language={language}
           setAllData={setAllData}
           handleChangeOpenEditTask={handleChangeOpenEditTask}
           IsOpenEditTask={IsOpenEditTask}
@@ -89,7 +91,7 @@ const UpdateTask = ({ selectedBoard, IsOpen, SetIsOpen, taskData, allData, setAl
         />
         {selectedColumn !== undefined ? <p className='descriptionText'>{selectedColumn.description}</p> : null}
         <div className="subtaskSection">
-          <p>Subtask ({completedSubtasks} of {selectedColumn.subtasks.length})</p>
+          <p>{language ? `Subtask (${completedSubtasks} of ${selectedColumn.subtasks.length})`:`Alt Görev (${completedSubtasks} / ${selectedColumn.subtasks.length})`}</p>
           {IsOpen
             ? selectedColumn?.subtasks.map((subtask, index) => (
               <div  className='updateSubTask' style={{backgroundColor:`${subtaskStatus[index] ? "#00ff0021":""}`}}  key={index}>

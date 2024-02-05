@@ -8,6 +8,7 @@ import DesktopDrawer from "../components/Navbar/MainNavbar/desktopDrawer";
 import { message, Spin } from 'antd';
 
 const MainPage = () => {
+  const [language , setLanguage] = useState(true)
   const [IsOpen, SetIsOpen] = useState(false);
   const [taskData, SetTaskData] = useState({});
   const [selectedBoard, setSelectedBoard] = useState(0);
@@ -32,6 +33,10 @@ const MainPage = () => {
     return () => clearTimeout(timer);
   }, [AllData]);
 
+  // useEffect(() => {
+  //   localStorage.setItem('myData', JSON.stringify(language));
+  // }, [language]);
+
   useEffect(() => {
     localStorage.setItem('myData', JSON.stringify(AllData));
   }, [AllData]);
@@ -44,10 +49,10 @@ const MainPage = () => {
     setSelectedBoard(x);
   };
 
-  const showMessageDelete = (title1, type) => {
+  const showMessageDelete = (title1, type , titletr) => {
     messageApi.open({
       type: type,
-      content: `${title1}`,
+      content: `${language ? title1:titletr}`,
     });
     console.log("deneme");
   };
@@ -151,6 +156,7 @@ const MainPage = () => {
         selectedBoard={selectedBoard}
       />
       <RightSide
+        language={language}
         setSelectedBoard={setSelectedBoard}
         showMessageDelete={showMessageDelete}
         theme={theme}
@@ -163,6 +169,8 @@ const MainPage = () => {
     <div className="desktopDiv" style={{ display: "flex" }}>
       <DesktopDrawer
         setTheme={setTheme}
+        setLanguage={setLanguage}
+        language={language}
         theme={theme}
         AllData={AllData}
         ChangeSelectedBoard={ChangeSelectedBoard}
@@ -180,6 +188,7 @@ const MainPage = () => {
           createColumn
         )}
         <CreateNewColumn
+          language={language}
           theme={theme}
           setAllData={setAllData}
           AllData={AllData}
@@ -190,6 +199,7 @@ const MainPage = () => {
     {IsOpen
       && <UpdateTask
         theme={theme}
+        language={language}
         showMessageDelete={showMessageDelete}
         setAllData={setAllData}
         selectedBoard={selectedBoard}

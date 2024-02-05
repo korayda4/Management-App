@@ -5,7 +5,7 @@ import MyInput from '../GeneralComponent/Input';
 import Buttons from '../GeneralComponent/Button';
 
 
-const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllData, setAllData, changeAllData }) => {
+const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllData, setAllData, changeAllData,language }) => {
     const [messageApi, contextHolder] = message.useMessage();
     const [newInputs, setNewInputs] = useState([]);
     const [taskTitle, setTaskTitle] = useState('');
@@ -27,13 +27,13 @@ const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllDa
         if (taskTitle == ""){
             messageApi.open({
                 type: 'warning',
-                content: 'Please Enter Title!',
+                content: `${language ? 'Please Enter Title!':"Lütfen bir isim girin!"}`,
             })
             return
         }
         messageApi.open({
             type: 'success',
-            content: 'New Task Succesfuly Created',
+            content: `${language ? 'New Task Succesfuly Created':"Yeni görev başarıyla oluşturuldu"}`,
         })
         const newTask = {
             title: taskTitle,
@@ -58,7 +58,7 @@ const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllDa
         <Modal
             centered={true}
             footer={null}
-            title="Add New Task"
+            title={language ? "Add New Task":"Yeni görev oluştur"}
             open={IsOpenAddTask}
             onOk={null}
             onCancel={ChangeIsOpenAddTask}
@@ -67,26 +67,26 @@ const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllDa
         >
             {contextHolder}
             <div className="AddTaskDiv">
-                Title
+                {language ? "Title":"Görev Adı"}
                 <MyInput
                     value={taskTitle}
                     onChange={(e) => setTaskTitle(e.target.value)}
                     placeholder="Title"
                     marginB={"18px"}
                 />
-                Description
+                {language ? "Description":"Açıklama"}
                 <TextArea 
                     rows={4} 
-                    placeholder='e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little.'
+                    placeholder={language ? 'e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little.':"Örneğin: Ara vermek her zaman iyidir. Bu 15 dakikalık mola pilleri biraz şarj edecektir."}
                     style={{maxHeight:"125px",minHeight:"100px",marginBottom:"18px"}}
                     onChange={(e) => {setDescription(e.target.value)}}
                 />
-                Subtasks
+                {language ? "Subtasks":"Alt Görev"}
                 <div className="newSubtaskInput">
                     {newInputs.map((input, index) => (
                         <div id={index} className="CreateNewColumnsInput" key={index}>
                             <Input
-                                placeholder="Enter Subtask"
+                                placeholder={language ? "Enter Subtask":"Alt Görev Gir"}
                                 value={input}
                                 onChange={(e) => {
                                     const updatedInputs = [...newInputs];
@@ -107,14 +107,14 @@ const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllDa
                 <Buttons
                     onClick={addNewInput}
                     radius="32px"
-                    title="Create New Subtask"
+                    title={language ? "Create New Subtask":"Yeni Alt Görev Oluştur"}
                     color="#635FC7"
                     bgcolor="#635FC71A"
                     width="100%"
                     pg="12px"
                     marginB="16px"
                 />
-                Status
+                {language ? "Status":"Durum"}
                 <select
                     className="updateSubTask"
                     style={{ width: '100%' }}
@@ -132,7 +132,7 @@ const AddTaskModal = ({ IsOpenAddTask, ChangeIsOpenAddTask, selectedBoard, AllDa
                 <Buttons
                     onClick={createNewTask}
                     radius="32px"
-                    title="Create New Task"
+                    title={language ? "Create New Task":"Yeni Görev Oluştur"}
                     color="white"
                     bgcolor="#635FC7"
                     width="100%"

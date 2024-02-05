@@ -9,6 +9,7 @@ const EditBoard = ({
   AllData,
   changeAllData,
   selectedBoard,
+  language
 }) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [inputValue, setInputValue] = useState("");
@@ -24,17 +25,13 @@ const EditBoard = ({
     }
   }, [selectedBoard, AllData, IsOpenEditBoard]);
 
-  
-
   const updateBoard = () => {
     const allDataCopy = { ...temporaryData };
     allDataCopy["boards"][selectedBoard].name = boardName;
     console.log(allDataCopy["boards"][selectedBoard].columns);
-    // allDataCopy["boards"][selectedBoard].columns = newInputs;
-    // console.log(allDataCopy["boards"][selectedBoard].columns);
     messageApi.open({
         type: 'success',
-        content: 'board was edited successfully ',
+        content:  `${language ? 'board was edited successfully':"Pano başarıyla güncellendi"}`,
       })
 
     changeAllData(allDataCopy);
@@ -66,7 +63,7 @@ const EditBoard = ({
     <Modal
       centered={true}
       footer={null}
-      title="Edit Board"
+      title={language ? "Edit Board":"Panoyu Düzenle"}
       open={IsOpenEditBoard}
       onCancel={() => {
         changeIsOpenEditBoard();
@@ -78,13 +75,13 @@ const EditBoard = ({
     >
       {contextHolder}
       <div className="AddNewBoard">
-        Board Name
+        {language ? "Board Name":"Pano Adı"}
         <MyInput
           value={boardName}
           onChange={(e) => setBoardName(e.target.value)}
           placeholder="Board Name"
         />
-        Board Columns
+        {language ? "Board Columns":"Pano Sütunları"}
         {newInputs.map((input, index) => (
           <div id={index.toString()} className="CreateNewColumnsInput" key={index}>
             <Input
@@ -111,7 +108,7 @@ const EditBoard = ({
         <Buttons
           onClick={onAddColumn}
           radius="32px"
-          title="+Add New Column"
+          title={language ? "+Add New Column":"+Yeni Sütun Ekle"}
           color="#635FC7"
           bgcolor="#635FC71A"
           width={"100%"}
@@ -121,7 +118,7 @@ const EditBoard = ({
         <Buttons
           onClick={updateBoard}
           radius="32px"
-          title="Update Board"
+          title={language ? "Update Board":"Panoyu Güncelle"}
           color="white"
           bgcolor="#635FC7"
           width={"100%"}

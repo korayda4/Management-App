@@ -10,7 +10,9 @@ const DesktopDrawer = ({
     setTheme,
     theme,
     show,
-    ShowColumnModal
+    ShowColumnModal,
+    language,
+    setLanguage
 }) => {
 
     const [IsOpen , setIsOpen] = useState(false)
@@ -43,16 +45,23 @@ const DesktopDrawer = ({
         <> 
             <div style={{backgroundColor:`${theme ? "#2B2C37":""}`}} className={`desktopColumn ${DesktopColumnIsOpen ? "active":"deactive"}`}>
                 <div className="upper" style={{display:"flex",gap:"6px",flexDirection:"column"}}>
-                    <span style={{textAlign:"left",margin:"12px 12px 12px 38px"}} className="allBoardsText">ALL BOARDS ({Toplam})</span>
+                    <span style={{textAlign:"left",margin:"12px 12px 12px 38px"}} className="allBoardsText">{language ? "ALL BOARDS":"TÜM PANOLAR"} ({Toplam})</span>
                     <div className="ModalColumns" >
                         {BoardName}
                     </div> 
                     <div style={{marginBottom:"24px"}} className="NewBoardText">
                         <img src="image/fluent_board-split-24-regular.png" alt="classİcon" onClick={setAddBoardModal}/> 
-                        <span onClick={setAddBoardModal}>+Create New Board</span>
+                        <span onClick={setAddBoardModal}>{language ? "+Create New Board":"+Yeni Pano Oluştur"}</span>
                     </div>
                 </div>        
                 <div className="drawerBottom" style={{position:"absolute",bottom:"10px",left:"0"}}>
+                    <div style={{backgroundColor:`${theme ? "#20212C":""}`}} className="DesktopSetTheme">
+                        <div  className="switch">
+                            <img style={{width:"24px",opacity:`${theme ? "0.7":""}`}} src="image\icons8-turkey-100.png" alt="" />
+                            <Switch style={{backgroundColor:"#635FC7",width:"12px"}} defaultChecked={language} onChange={() => {setLanguage(!language)}} />
+                            <img style={{width:"24px",opacity:`${theme ? "0.7":""}`}} src="image\icons8-english-100.png" alt="" />
+                        </div>
+                    </div>
                     <div style={{backgroundColor:`${theme ? "#20212C":""}`}} className="DesktopSetTheme">
                         <div  className="switch">
                             <img src="image\Combined Shape (1).png" alt="" />
@@ -62,10 +71,11 @@ const DesktopDrawer = ({
                     </div>
                     <div className="hideSideBar" onClick={() => {setDesktopColumnIsOpen(!DesktopColumnIsOpen)}}>
                         <img style={{cursor:"pointer"}} src="image\eye-slash.1.png" alt="eye-Slash" />
-                        <span style={{cursor:"pointer"}}>Hide Sidebar</span>
+                        <span style={{cursor:"pointer"}}>{language ? "Hide Sidebar":"Menüyü Gizle"}</span>
                     </div>
                 </div>
                 <AddBoardModal 
+                    language={language}
                     IsOpen={IsOpen} 
                     SetIsOpen={ChangeIsOpen}
                     AllData={AllData}

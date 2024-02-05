@@ -4,7 +4,7 @@ import EditBoard from "../../modals/EditBoard";
 import DeleteOrEdit from "../../modals/DeleteOrEditBoard";
 import DeleteBoard from "../../modals/DeleteBoard";
 
-const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMessageDelete,setSelectedBoard}) => {
+const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMessageDelete,setSelectedBoard,language}) => {
     const [IsOpenAddTask,setIsOpenAddTask] = useState(false)
     const [IsOpenEditBoard,setIsOpenEditBoard] = useState(false)
     const [IsOpenDeleteOrEdit,setIsOpenDeleteOrEdit] = useState(false)
@@ -30,7 +30,7 @@ const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMes
     return(
         <div className="RightSide">
             <button id="plus"  onClick={ChangeIsOpenAddTask}>
-                + Add New Task
+               {language ? "+ Add New Task":"+ Yeni Görev Ekle"} 
             </button>
             <button id="mobilePlus"  onClick={ChangeIsOpenAddTask}>
                 <img src="image\Group 27.svg" alt="" />
@@ -39,6 +39,7 @@ const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMes
                 <img onClick={changeIsOpenDeleteOrEdit} src="image\Group 6.svg" alt="" />
             </button>
             <DeleteOrEdit
+                language={language}
                 theme={theme}
                 changeIsOpenDeleteOrEdit={changeIsOpenDeleteOrEdit}
                 changeIsOpenEditBoard={changeIsOpenEditBoard}
@@ -54,9 +55,10 @@ const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMes
                 IsOpenDelete={IsOpenDelete}
                 setIsOpenDelete={setIsOpenDelete}
                 setSelectedBoard={setSelectedBoard}
-
+                language={language}
             />
             <EditBoard 
+                language={language}
                 changeAllData={changeAllData}
                 selectedBoard={selectedBoard}
                 AllData={AllData}
@@ -64,6 +66,7 @@ const RightSide = ({selectedBoard,AllData,changeAllData,setAllData,theme,showMes
                 changeIsOpenEditBoard={changeIsOpenEditBoard}
             />
             <AddTaskModal
+                language={language}
                 setAllData={setAllData}
                 changeAllData={changeAllData}                
                 AllData={AllData}
