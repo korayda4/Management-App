@@ -1,4 +1,4 @@
-# Management App | Dynamic V1.0.0.2
+# Management App | Dynamic V1.0.0.3
 
 ## Features
 
@@ -30,7 +30,7 @@
 
 ### 9) The status of tasks can be changed by drag and drop (added)
 
-### 10) Language selection selectable (will be added)
+### 10) Language selection selectable (added)
 
 ### 11) Task time (a notification will be scheduled by selecting the last time the task will finish) (will be added)
 
